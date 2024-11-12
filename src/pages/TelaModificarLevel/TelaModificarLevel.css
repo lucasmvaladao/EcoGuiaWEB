@@ -165,7 +165,7 @@
 }
 
 .level-input {
-    width: 20vw;
+    width: 25vw;
     padding: 10px;
     border: 0.5px solid #6BBF59;
     border-radius: 5px;
@@ -214,4 +214,25 @@ flex-direction: column;
 border: 0.5px solid transparent;
 border-radius: 5px;
 box-shadow: 1px 3px 25px 9px rgba(0, 0, 0, 0.16);
+}
+
+
+.container-levels{
+    width: 30vw; 
+    height: 10vh; 
+    background-color: #E2F2DF;
+    border: 0.5px solid transparent;
+    border-radius: 50px;
+    box-shadow: 1px 3px 10px 9px rgba(0, 0, 0, 0.16);
+    margin-bottom: 55px;
+    margin-top: 10px;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 5px; 
+    gap:10px
+}
+
+.container-levels p{
+text-align: center;
+align-items: center;
 }

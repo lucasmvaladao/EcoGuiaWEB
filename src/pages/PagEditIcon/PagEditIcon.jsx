@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import "./PagEditIcon.css";
 import { Link } from "react-router-dom";
 
+
 function PagEditIcon() {
+
+const [avatar,setAvatar] = useState('')
+    useState(() => {
+    async function img() {
+    const imag = localStorage.getItem('avatar')
+    setAvatar(imag);
+       }
+       img()
+    },[])
     return (
         <div className='container-catalogo'>
             <div className='container-logo'>
@@ -26,7 +37,7 @@ function PagEditIcon() {
             <div className="pai-container-edicao">
                 
                 <div className="circle-container">
-                    <img src='/img/perfil-crud.svg' alt='icon' className='circle-icon' />
+                    <img src={avatar} alt='icon' className='circle-icon' />
                 </div>
                 
                 <div className="input-container">

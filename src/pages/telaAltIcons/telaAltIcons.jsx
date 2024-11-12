@@ -1,8 +1,26 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./telaAltIcons.css";
+import api from '../../services/api';
 
 
 function TelaAltIcons() {
+
+    useEffect(() => {
+     getAllAvatar()
+    },[])
+
+    const [avatar,setAvatar] = useState([])
+    const getAllAvatar = async () =>{
+        try {
+          const response = await api.get('/avatars')
+          setAvatar(response.data.avatares)
+        }
+        catch(erro){
+          console.log(erro)
+        }
+      }
     return (
         <div className='container-catalogo'>
             <div className='container-logo'>
@@ -17,7 +35,7 @@ function TelaAltIcons() {
                 <a href="/">ECOPONTOS</a>
             </div>
             <div className='btn-login'>
-                <Link className="button" to="/Login">ADMIN</Link>
+                <Link className="button" to="/Login">LOGIN</Link>
             </div>
             <div className='container-titulo-alt'>
                 <h2><span className='highlight'>Icons</span>para Perfis</h2>
@@ -26,9 +44,9 @@ function TelaAltIcons() {
             </div>
             <div className='pai-container-alticons'>
             <div className='container-alticons'>
-                {[...Array(9)].map((_, index) => (
-                <Link key={index} to="/PagEditIcon" className='icon-link'> 
-                <img className='img-icon-alt' src='/img/perfil-crud.svg' alt={`icon-${index}`} />
+                {avatar.map((_, index) => (
+                <Link key={index} to="/PagEditIcon" className='icon-link' onClick={() => localStorage.setItem('avatar',avatar[index].blob_avatar)}> 
+                <img className='img-icon-alt' src={avatar[index].blob_avatar} alt={`icon-${index}`} />
                 </Link>
                     ))}
                 </div>
